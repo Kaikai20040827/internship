@@ -1,0 +1,10 @@
+flask
+flask-login
+flask-sqlalchemy
+flask-mysqldb
+face-recognition 
+numpy
+cryptography
+python-dotenv
+werkzeug
+mysql-connector-python

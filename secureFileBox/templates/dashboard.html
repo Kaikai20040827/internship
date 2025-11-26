@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}文件管理 - 保密文件箱{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4 reveal">
+    <div>
+        <h2 class="mb-0">文件管理</h2>
+        <div class="hint">欢迎回来，{{ current_user.username }}！</div>
+    </div>
+    <div>
+        <a href="{{ url_for('operation_logs') }}" class="btn btn-outline-secondary me-2">查看操作记录</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">退出</a>
+    </div>
+</div>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="row g-4">
+    <div class="col-lg-5">
+        <div class="card modern-card p-3 reveal hero">
+            <h5 class="mb-3">上传新文件</h5>
+            <form method="POST" action="{{ url_for('upload_file') }}" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <input type="file" class="form-control" id="file" name="file" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">上传并加密</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="card modern-card reveal">
+            <div class="card-body">
+                <h5 class="card-title">我的文件</h5>
+                {% if files %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>文件名</th>
+                                <th>上传时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for file in files %}
+                            <tr>
+                                <td>{{ file.filename }}</td>
+                                <td>{{ file.uploaded_at.strftime('%Y-%m-%d %H:%M') }}</td>
+                                <td>
+                                    <a href="{{ url_for('download_file', file_id=file.id) }}"
+                                        class="btn btn-sm btn-success icon-btn me-1" title="下载">
+                                        <i class="bi bi-download"></i>
+                                    </a>
+                                    <a href="{{ url_for('delete_file', file_id=file.id) }}"
+                                        class="btn btn-sm btn-danger icon-btn" title="删除"
+                                        onclick="return confirm('确定要删除此文件吗？')">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="text-center text-muted">您还没有上传任何文件</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

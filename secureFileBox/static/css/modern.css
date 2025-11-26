@@ -1,0 +1,197 @@
+/* Modern and chic styling for Secure File Box */
+:root {
+    --primary: #6a11cb;
+    /* purple */
+    --secondary: #2575fc;
+    /* blue */
+    --card-bg: #ffffff;
+    --muted: #6c757d;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    background: linear-gradient(135deg, rgba(234, 234, 255, 0.8), rgba(245, 249, 255, 1));
+    color: #222;
+}
+
+.modern-navbar {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    box-shadow: 0 6px 18px rgba(39, 41, 51, 0.08);
+}
+
+.brand-icon {
+    font-size: 20px;
+}
+
+.brand-text {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.modern-navbar.nav-scrolled {
+    padding: 10px 0;
+    backdrop-filter: blur(6px) saturate(1.05);
+    box-shadow: 0 12px 30px rgba(39, 41, 51, 0.08);
+}
+
+main.container {
+    max-width: 1000px;
+}
+
+.card.modern-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(29, 31, 45, 0.06);
+    overflow: hidden;
+}
+
+.header-card {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.form-control:focus {
+    border-color: rgba(37, 117, 252, 0.9);
+    box-shadow: 0 0 0 0.1rem rgba(37, 117, 252, 0.15);
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border: none;
+    box-shadow: 0 6px 18px rgba(106, 17, 203, 0.14);
+}
+
+.btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.table thead th {
+    border-bottom: none;
+    font-weight: 600;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(47, 52, 70, 0.02);
+}
+
+.modern-footer {
+    background: linear-gradient(90deg, rgba(245, 245, 255, 0.6), rgba(255, 255, 255, 0.8));
+}
+
+/* Small helpers */
+.hint {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.icon-btn {
+    border-radius: 10px;
+}
+
+/* Responsive tweak */
+@media (max-width: 576px) {
+    .brand-text {
+        display: none;
+    }
+}
+
+/* Apple-like hero and interactions */
+.hero {
+    position: relative;
+    border-radius: 12px;
+    padding: 40px 36px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.6));
+    box-shadow: 0 18px 60px rgba(16, 18, 28, 0.08);
+    backdrop-filter: blur(8px) saturate(1.05);
+    transition: transform 0.45s cubic-bezier(.2, .9, .2, 1), box-shadow 0.45s ease;
+}
+
+.hero:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 90px rgba(16, 18, 28, 0.12);
+}
+
+.hero-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.hero-sub {
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+/* Reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 550ms ease, transform 550ms cubic-bezier(.2, .9, .2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Floating icon block */
+.feature-icon {
+    width: 86px;
+    height: 86px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.34));
+    box-shadow: 0 10px 30px rgba(56, 63, 86, 0.08);
+}
+
+/* File row hover lift */
+.table tbody tr {
+    transition: transform 220ms ease, background 220ms ease;
+}
+
+.table tbody tr:hover {
+    transform: translateY(-3px);
+    background: rgba(37, 117, 252, 0.03);
+}
+
+/* Buttons */
+.btn-primary {
+    border-radius: 12px;
+    padding: .6rem 1.1rem;
+    font-weight: 600;
+}
+
+/* Small upload progress placeholder */
+.upload-progress {
+    height: 10px;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.upload-progress .bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transition: width 400ms ease;
+}
+
+/* Smooth glass footer */
+.modern-footer {
+    background: linear-gradient(90deg, rgba(246, 247, 251, 0.7), rgba(255, 255, 255, 0.85));
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Subtle icon button hover */
+.icon-btn {
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.icon-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(37, 117, 252, 0.08);
+}

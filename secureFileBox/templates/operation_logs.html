@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}操作记录 - 保密文件箱{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4 reveal">
+    <div>
+        <h2 class="mb-0">操作记录</h2>
+        <div class="hint">记录你的上传、下载与删除操作</div>
+    </div>
+    <div>
+        <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">返回文件管理</a>
+    </div>
+</div>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="card modern-card reveal">
+    <div class="card-body">
+        <h5 class="card-title">操作历史</h5>
+        <div class="table-responsive mt-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>操作时间</th>
+                        <th>操作类型</th>
+                        <th>详情</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td>{{ log.operation_time }}</td>
+                        <td>{{ log.operation_type }}</td>
+                        <td>{{ log.details }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center text-muted">暂无操作记录</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}登录 - 保密文件箱{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+        <div class="card modern-card reveal">
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <h2 class="mb-1">欢迎回来</h2>
+                    <p class="hint">使用用户名+密码和人脸识别登录你的文件箱</p>
+                </div>
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-danger">{{ message }}</div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <form method="POST" action="{{ url_for('login') }}" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">用户名</label>
+                        <input type="text" class="form-control form-control-lg" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">密码</label>
+                        <input type="password" class="form-control form-control-lg" id="password" name="password"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="face_image" class="form-label">人脸验证</label>
+                        <input type="file" class="form-control" id="face_image" name="face_image" accept="image/*"
+                            capture="environment" required>
+                        <div class="hint mt-1">请上传包含您脸部的清晰照片进行验证</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg w-100">登录</button>
+                </form>
+            </div>
+            <div class="card-footer text-center header-card">
+                还没有账号？<a href="{{ url_for('register') }}">立即注册</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5 d-none d-md-block">
+        <div class="card modern-card p-4 hero reveal">
+            <div class="text-center">
+                <h4 class="mb-2">安全存储</h4>
+                <p class="hint">加密存储文件并采用人脸识别保护你的数据安全。</p>
+                <div class="my-4">
+                    <i class="bi bi-lock-fill" style="font-size: 42px; color: var(--primary)"></i>
+                </div>
+                <p class="small">快速、安全、隐私保护—适合个人与小团队使用。</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
