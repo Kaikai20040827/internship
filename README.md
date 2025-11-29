@@ -17,7 +17,7 @@ Secure File Box（保密文件箱）是一个基于 Flask 的简单 Web 应用�
 ---
 
 ## 🧭 Technology Stack / 技术栈
-- Python 3.8+
+- Python 3.8+0
 - Flask
 - Flask-Login
 - Flask-SQLAlchemy
