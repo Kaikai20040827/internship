@@ -167,7 +167,6 @@ with app.app_context():
     # 创建所有定义的表
     db.create_all()
 
-# 运行Flask应用
 if __name__ == '__main__':
-    # 启动开发服务器，开启调试模式
     app.run(debug=True)
+    # 运行Flask应用，启用调试模式
