@@ -11,7 +11,7 @@ from urllib.parse import quote
 # 初始化Flask应用
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key-here'  # 生产环境需替换为随机密钥
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:0827@localhost/secure_file_box'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:password@localhost/secure_file_box'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024  # 10MB文件限制
