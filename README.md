@@ -2,7 +2,7 @@
 
 # Secure File Box (保密文件箱)
 
-Secure File Box（保密文件箱）是一个基于 Flask 的简单 Web 应用，用于安全地加密、存储和管理用户文件。它使用人脸识别作为第二因子进行登录（用户名 + 密码 + 人脸验证），并在服务器端以加密形式保存文件。该项目适合作为学习用途或原型演示。
+Secure File Box（保密文件箱）是一个基于 Flask 的简单 Web 应用，用于安全地加密、存储和管理用户文件。它使用人脸识别作为第二因子进行登录（用户名 + 密码 + 人脸验证），并在服务器端以加密形式保存文件。
 
 ---
 
@@ -12,12 +12,12 @@ Secure File Box（保密文件箱）是一个基于 Flask 的简单 Web 应用�
 - 上传文件（文件在数据库中以对称加密保存）
 - 下载、删除文件（均记录操作日志）
 - 操作记录页面（查看上传/下载/删除历史）
-- 使用 `Flask-Login`, `SQLAlchemy`, `face_recognition`, `cryptography`
+- 使用 `Flask-Login`, `SQLAlchemy`, `face_recognition`, `cryptography.fernet`
 
 ---
 
 ## 🧭 Technology Stack / 技术栈
-- Python 3.8+0
+- Python 3.13
 - Flask
 - Flask-Login
 - Flask-SQLAlchemy
@@ -51,9 +51,10 @@ Secure File Box（保密文件箱）是一个基于 Flask 的简单 Web 应用�
 - mysql-connector-python
 
 注：`face_recognition` 与 `dlib`/OpenCV 的安装在某些系统（尤其 Windows）上较为复杂；建议使用 `conda` 并从 `conda-forge` 安装 `dlib`、`cmake`。例如：
+(也可以使用base)
 
 ```powershell
-conda create -n securefilebox python=3.10
+conda create -n securefilebox python=3.13
 conda activate securefilebox
 conda install -c conda-forge dlib cmake numpy
 pip install -r secureFileBox/requirement.txt
