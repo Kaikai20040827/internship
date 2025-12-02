@@ -32,12 +32,12 @@ Secure File Box（保密文件箱）是一个基于 Flask 的简单 Web 应用�
   - 默认会在应用启动时执行 `db.drop_all()` -> `db.create_all()`（会清空数据库），仅用于开发，**请在生产中移除**。
   - `SECRET_KEY`, 数据库连接 URI, Fernet 密钥均在代码中或以示例形式暴露。请使用环境变量或配置文件管理这些秘密。
   - 密码以明文形式存储（`User.password`），请在生产环境使用安全的密码哈希（如 bcrypt 或 werkzeug.security 系列）。
-  - 当前 `Fernet` 密钥在每次应用启动时随机生成，若不使用持久密钥已上传的文件将无法解密。请在 .env 或安全配置中设置并保持不变（或使用 KMS）。
+  - 当前 `Fernet` 密钥在每次应用启动时随机生成，若不使用持久密钥已上传的文件将无法解密。请在安全配置中设置并保持不变（或使用 KMS）。
 
 ---
 
-## 📦 Requirements / 依赖
-依赖列在 `secureFileBox/requirement.txt`：
+##⚠️📦 Install Requirements / 安装依赖
+⚠️⚠️⚠️依赖列在 `secureFileBox/requirement.txt`⚠️⚠️⚠️：
 
 - flask
 - flask-login
@@ -51,7 +51,7 @@ Secure File Box（保密文件箱）是一个基于 Flask 的简单 Web 应用�
 - mysql-connector-python
 
 注：`face_recognition` 与 `dlib`/OpenCV 的安装在某些系统（尤其 Windows）上较为复杂；建议使用 `conda` 并从 `conda-forge` 安装 `dlib`、`cmake`。例如：
-(也可以使用base)
+(也可以不创建新环境，使用base)
 
 ```powershell
 conda create -n securefilebox python=3.13
@@ -62,23 +62,10 @@ pip install -r secureFileBox/requirement.txt
 
 ---
 
-## 🔧 Configuration / 配置
-建议在项目根目录创建一个 `.env` 文件（或使用系统级环境变量），其中包含以下设置（示例）：
-
-```env
-# Flask
-FLASK_ENV=development
-SECRET_KEY=replace-with-a-secure-random-string
-
-# SQLAlchemy URI (MySQL 例子)
-DATABASE_URI=mysql+mysqlconnector://<username>:<password>@localhost/secure_file_box
-
-# Fernet persistent key (用于加密/解密文件) — 生成一次并保留
-FERNET_KEY=<BASE64_FERNET_KEY>
-
-# 上传配置
-UPLOAD_FOLDER=uploads
-MAX_CONTENT_LENGTH=10485760  # 10MB
+## ⚠️🔧 Configuration / 配置
+⚠️⚠️⚠️app.py的第14行中，把password改成自己的数据库密码⚠️⚠️⚠️:
+```
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:password@localhost/secure_file_box'
 ```
 
 如何生成 Fernet key：
